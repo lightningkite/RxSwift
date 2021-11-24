@@ -10,9 +10,7 @@
 ///
 /// Each notification is broadcasted to all subscribed and future observers, subject to buffer trimming policies.
 public class ReplaySubject<Element>
-    : Observable<Element>
-    , SubjectType
-    , ObserverType
+    : Subject<Element>
     , Disposable {
     public typealias SubjectObserverType = ReplaySubject<Element>
 
@@ -51,13 +49,8 @@ public class ReplaySubject<Element>
     /// Notifies all subscribed observers about next event.
     ///
     /// - parameter event: Event to send to the observers.
-    public func on(_ event: Event<Element>) {
+    public override func on(_ event: Event<Element>) {
         rxAbstractMethod()
-    }
-    
-    /// Returns observer interface for subject.
-    public func asObserver() -> ReplaySubject<Element> {
-        self
     }
     
     /// Unsubscribe all observers and release resources.

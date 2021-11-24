@@ -10,12 +10,9 @@
 ///
 /// Observers can subscribe to the subject to receive the last (or initial) value and all subsequent notifications.
 public final class BehaviorSubject<Element>
-    : Observable<Element>
-    , SubjectType
-    , ObserverType
+    : Subject<Element>
     , SynchronizedUnsubscribeType
     , Cancelable {
-    public typealias SubjectObserverType = BehaviorSubject<Element>
 
     typealias Observers = AnyObserver<Element>.s
     typealias DisposeKey = Observers.KeyType
@@ -74,7 +71,7 @@ public final class BehaviorSubject<Element>
     /// Notifies all subscribed observers about next event.
     ///
     /// - parameter event: Event to send to the observers.
-    public func on(_ event: Event<Element>) {
+    public override func on(_ event: Event<Element>) {
         #if DEBUG
             self.synchronizationTracker.register(synchronizationErrorMessage: .default)
             defer { self.synchronizationTracker.unregister() }
@@ -133,11 +130,6 @@ public final class BehaviorSubject<Element>
         }
 
         _ = self.observers.removeKey(disposeKey)
-    }
-
-    /// Returns observer interface for subject.
-    public func asObserver() -> BehaviorSubject<Element> {
-        self
     }
 
     /// Unsubscribe all observers and release resources.

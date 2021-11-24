@@ -10,12 +10,9 @@
 ///
 /// Each notification is broadcasted to all subscribed observers.
 public final class PublishSubject<Element>
-    : Observable<Element>
-    , SubjectType
+    : Subject<Element>
     , Cancelable
-    , ObserverType
     , SynchronizedUnsubscribeType {
-    public typealias SubjectObserverType = PublishSubject<Element>
 
     typealias Observers = AnyObserver<Element>.s
     typealias DisposeKey = Observers.KeyType
@@ -53,7 +50,7 @@ public final class PublishSubject<Element>
     /// Notifies all subscribed observers about next event.
     ///
     /// - parameter event: Event to send to the observers.
-    public func on(_ event: Event<Element>) {
+    public override func on(_ event: Event<Element>) {
         #if DEBUG
             self.synchronizationTracker.register(synchronizationErrorMessage: .default)
             defer { self.synchronizationTracker.unregister() }
@@ -114,11 +111,6 @@ public final class PublishSubject<Element>
 
     func synchronized_unsubscribe(_ disposeKey: DisposeKey) {
         _ = self.observers.removeKey(disposeKey)
-    }
-    
-    /// Returns observer interface for subject.
-    public func asObserver() -> PublishSubject<Element> {
-        self
     }
     
     /// Unsubscribe all observers and release resources.
