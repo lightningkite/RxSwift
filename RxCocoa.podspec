@@ -1,16 +1,16 @@
 Pod::Spec.new do |s|
   s.name             = "RxCocoa"
-  s.version          = "6.2.1-LK"
+  s.version          = "6.2.2-LK"
   s.summary          = "RxSwift Cocoa extensions"
   s.description      = <<-DESC
 * UI extensions
 * NSURL extensions
 * KVO extensions
                         DESC
-  s.homepage         = "https://github.com/ReactiveX/RxSwift"
+  s.homepage         = "https://github.com/lightningkite/RxSwift"
   s.license          = 'MIT'
   s.author           = { "Krunoslav Zaher" => "krunoslav.zaher@gmail.com" }
-  s.source           = { :git => "https://github.com/ReactiveX/RxSwift.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/lightningkite/RxSwift.git", :tag => s.version.to_s }
 
   s.requires_arc          = true
 

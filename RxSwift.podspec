@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "RxSwift"
-  s.version          = "6.2.1-LK"
+  s.version          = "6.2.2-LK"
   s.summary          = "RxSwift is a Swift implementation of Reactive Extensions"
   s.description      = <<-DESC
 This is a Swift port of [ReactiveX.io](https://github.com/ReactiveX)
@@ -20,10 +20,10 @@ would become if written in RxSwift
 gitDiff().grep("bug").less          // sequences of swift objects
 ```
                         DESC
-  s.homepage         = "https://github.com/ReactiveX/RxSwift"
+  s.homepage         = "https://github.com/lightningkite/RxSwift"
   s.license          = 'MIT'
   s.author           = { "Krunoslav Zaher" => "krunoslav.zaher@gmail.com" }
-  s.source           = { :git => "https://github.com/ReactiveX/RxSwift.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/lightningkite/RxSwift.git", :tag => s.version.to_s }
 
   s.requires_arc          = true
 
